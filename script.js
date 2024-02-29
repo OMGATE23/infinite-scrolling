@@ -4,7 +4,7 @@ const errorDisplay = document.querySelector("#error");
 let OFFSET = 0;
 const lastElementObserver = new IntersectionObserver(
   (entries) => {
-    lastElement = entries[entries.length - 1];
+    let [lastElement] = entries;
     if (lastElement.isIntersecting) {
       fetchPokemons(OFFSET);
       lastElementObserver.unobserve(lastElement.target);
@@ -14,8 +14,6 @@ const lastElementObserver = new IntersectionObserver(
     threshold: 0.5,
   }
 );
-
-
 
 fetchPokemons(OFFSET);
 
@@ -47,5 +45,3 @@ function renderPokemonsList(results) {
   errorDisplay.textContent = "";
   OFFSET += 10;
 }
-
-//
