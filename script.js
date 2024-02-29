@@ -15,16 +15,7 @@ const lastElementObserver = new IntersectionObserver(
   }
 );
 
-const outOffViewObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      entry.target.classList.toggle("hide", !entry.isIntersecting);
-    });
-  },
-  {
-    threshold: 0.5,
-  }
-);
+
 
 fetchPokemons(OFFSET);
 
