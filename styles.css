@@ -1,0 +1,38 @@
+body {
+    overflow-x: hidden;
+    font-family: sans-serif;
+  }
+  
+  h1 {
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin: 1rem auto;
+    outline: 1px solid #a3a3a3;
+    border-radius: 1rem;
+    transition: all 100ms;
+    transform: translateX(0%);
+    opacity: 1;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .hide {
+    transform: translateX(49%);
+    opacity: 0;
+  }
+  
+  .first-element {
+    background-color: blue;
+  }
+  
