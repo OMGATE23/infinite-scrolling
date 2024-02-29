@@ -15,16 +15,6 @@ const lastElementObserver = new IntersectionObserver(
   }
 );
 
-const firstElementObserver = new IntersectionObserver(
-  (entries) => {
-    firstElement = entries[0];
-    firstElement.classList.toggle("first-element", firstElement.isIntersecting);
-  },
-  {
-    threshold: 0.5,
-  }
-);
-
 const outOffViewObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
