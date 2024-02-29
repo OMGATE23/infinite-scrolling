@@ -1,12 +1,11 @@
 const displayBox = document.querySelector("#display-box");
-let pokemonsList = document.querySelectorAll(".pokemons");
 const errorDisplay = document.querySelector("#error");
 let OFFSET = 0;
 const lastElementObserver = new IntersectionObserver(
   (entries) => {
     let [lastElement] = entries;
     if (lastElement.isIntersecting) {
-      fetchPokemons(OFFSET);
+      fetchPokemons();
       lastElementObserver.unobserve(lastElement.target);
     }
   },
@@ -15,10 +14,10 @@ const lastElementObserver = new IntersectionObserver(
   }
 );
 
-fetchPokemons(OFFSET);
+fetchPokemons();
 
-function fetchPokemons(offset) {
-  fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`)
+function fetchPokemons() {
+  fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${OFFSET}`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data)
@@ -35,13 +34,10 @@ function renderPokemonsList(results) {
     li.textContent = pokemon.name;
     return li;
   });
-
-  pokemonsList = [...pokemonsList, ...pokemonArray];
-
   pokemonArray.forEach((pokemonElement) => {
     displayBox.append(pokemonElement);
   });
-  lastElementObserver.observe(pokemonsList[pokemonsList.length - 1]);
+  lastElementObserver.observe(pokemonArray[pokemonArray.length - 1]);
   errorDisplay.textContent = "";
   OFFSET += 10;
 }
